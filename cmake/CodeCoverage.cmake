@@ -37,13 +37,26 @@ endforeach()
 
 function(setup_coverage _targetname _outputname)
 	add_custom_target(${_targetname}
-    ${lcov_bin} --directory . --zerocounters
+    ${lcov_bin} --directory Testing --zerocounters
     COMMAND ${CMAKE_MAKE_PROGRAM} test
     COMMAND ${lcov_bin} --directory . --capture --output-file ${_outputname}.info
     COMMAND ${lcov_bin} --remove ${_outputname}.info 'Testing/*' '/usr/*' --output-file ${_outputname}.info.cleaned
     COMMAND ${genhtml_bin} -o ${_outputname} ${_outputname}.info.cleaned
     COMMAND ${CMAKE_COMMAND} -E remove ${_outputname}.info ${_outputname}.info.cleaned
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMENT "Running the tests... then process the coverage. Output in ./${_outputname}/index.html"
+    COMMENT "Running the tests... then process the coverage. Output in ${CMAKE_BINARY_DIR}/${_outputname}/index.html"
+	)
+endfunction() 
+
+function(single_coverage _targetname _outputname _binaryname _wdir)
+  add_custom_target(${_targetname}
+    ${lcov_bin} --directory ${_wdir}  --zerocounters
+    COMMAND ${CMAKE_BINARY_DIR}/bin/${_binaryname}
+    COMMAND ${lcov_bin} --directory ${CMAKE_BINARY_DIR} --capture --output-file ${_outputname}.info
+    COMMAND ${lcov_bin} --remove ${_outputname}.info '${_wdir}/*' '/usr/*' --output-file ${_outputname}.info.cleaned
+    COMMAND ${genhtml_bin} -o ${_outputname} ${_outputname}.info.cleaned
+    COMMAND ${CMAKE_COMMAND} -E remove ${_outputname}.info ${_outputname}.info.cleaned
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/${_wdir}
+    COMMENT "Running the binary in ${_wdir}... then process the coverage. Output in ${CMAKE_BINARY_DIR}/${_wdir}/${_outputname}/index.html"
 	)
 endfunction() 

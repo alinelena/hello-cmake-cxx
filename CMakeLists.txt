@@ -74,4 +74,9 @@ endmacro (do_test)
   do_test(0.0001 " is 0.01")
 endif()
 
+if (${DO_COVERAGE})
+  file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/analysis)
+  single_coverage(runcoverage coverage hello analysis)
+endif()
+
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
