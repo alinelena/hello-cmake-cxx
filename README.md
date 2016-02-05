@@ -18,6 +18,9 @@ make
 make install # use -DCMAKE_INSTALL_PREFIX=/path  to control the installation path
 make docs
 make test
+make coverage
+make runcoverage
+make help # to see all of them
 popd 
 popd
 ```
