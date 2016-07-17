@@ -24,3 +24,13 @@ make help # to see all of them
 popd 
 popd
 ```
+
+## cross-compile for windows
+opensuse mingw32 chain assumed. Edit winhelper.cmake to match other chains
+```
+mkdir build-win
+pushd build-win
+cmake ../ -DCMAKE_TOOLCHAIN_FILE=../cmake/winhelper.cmake
+make
+popd
+```
