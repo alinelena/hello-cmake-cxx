@@ -21,9 +21,9 @@ int main(int argc, char **argv){
   double a=42.0;
   if (argc>1) a=atof(argv[1]);
 #ifdef WITH_MYMATH
-  cout << "mySqrt("<<a<<") is "<<mySqrt(a)<<endl;
+  cout << "mySqrt("<<a<<") is "<<0.1*mySqrt(a)<<endl;
 #else
-  cout << "sqrt("<<a<<") is "<<sqrt(a)<<endl;
+  cout << "sqrt("<<a<<") is "<<0.1*sqrt(a)<<endl;
 #endif
   return 0;
 }
