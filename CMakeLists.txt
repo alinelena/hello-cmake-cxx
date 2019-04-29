@@ -1,8 +1,8 @@
 CMAKE_POLICY(SET CMP0048 NEW)
 #to be abe to use version
 project(Hello 
-LANGUAGES CXX
-VERSION 0.0.1.0)
+  LANGUAGES CXX
+  VERSION 0.0.1.0)
 cmake_minimum_required(VERSION 2.8.12)
 set(AUTHOR "Alin M Elena")
 set(AUTHOR_DETAILS "alin@elena.space")
@@ -10,9 +10,9 @@ set(DESCRIPTION "Hello World project cmake with C++ example")
 include(GNUInstallDirs)
 include(FeatureSummary)
 if (CMAKE_VERSION VERSION_LESS 3.1.0)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 else()
-	set(CMAKE_CXX_STANDARD 11)
+  set(CMAKE_CXX_STANDARD 11)
 endif()
 message(STATUS "Building prepareation for ${PROJECT_NAME} version: ${Hello_VERSION_MAJOR}.${Hello_VERSION_MINOR}.${Hello_VERSION_PATCH}.${Hello_VERSION_TWEAK}")
 option (WITH_MYMATH "Build with my math implementation" ON) 
@@ -60,12 +60,12 @@ if(BUILD_DOCS)
 endif()
 
 if (${BUILD_TESTING})
-#testing this macro in big projects may go in its own file
-macro (do_test arg result)
-  add_test(HelloTest${arg} ${CMAKE_INSTALL_BINDIR}/hello ${arg})
-  set_tests_properties (HelloTest${arg}
-    PROPERTIES PASS_REGULAR_EXPRESSION ${result})
-endmacro (do_test)
+  #testing this macro in big projects may go in its own file
+  macro (do_test arg result)
+    add_test(HelloTest${arg} ${CMAKE_INSTALL_BINDIR}/hello ${arg})
+    set_tests_properties (HelloTest${arg}
+      PROPERTIES PASS_REGULAR_EXPRESSION ${result})
+  endmacro (do_test)
 
   if (${DO_COVERAGE})
     setup_coverage(coverage coverage)
