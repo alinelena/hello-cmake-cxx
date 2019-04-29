@@ -15,9 +15,9 @@ int main(int argc, char **argv){
 
   cout<< "Hello World!!!\n";
   cout <<"Running hello version: "<<Hello_VERSION_MAJOR<<"."
-       << Hello_VERSION_MINOR<<"."<<Hello_VERSION_PATCH<<"."
-       << Hello_VERSION_TWEAK<<endl;
-       
+    << Hello_VERSION_MINOR<<"."<<Hello_VERSION_PATCH<<"."
+    << Hello_VERSION_TWEAK<<endl;
+
   double a=42.0;
   if (argc>1) a=atof(argv[1]);
 #ifdef WITH_MYMATH
