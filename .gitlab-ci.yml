@@ -23,3 +23,4 @@ cover-code:
     - cmake -S. -Bbuild_cov -DDO_COVERAGE=On
     - cmake --build build_cov
     - cmake --build build_cov -t coverage
+  coverage: '/TOTAL.+ ([0-9]{1,3}%)/'

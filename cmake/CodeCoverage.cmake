@@ -41,6 +41,7 @@ function(setup_coverage _targetname _outputname)
     COMMAND ${CMAKE_MAKE_PROGRAM} test
     COMMAND ${lcov_bin} --directory . --capture --output-file ${_outputname}.info
     COMMAND ${lcov_bin} --remove ${_outputname}.info 'Testing/*' '/usr/*' --output-file ${_outputname}.info.cleaned
+    COMMAND ${lcov_bin} --list ${_outputname}.info.cleaned
     COMMAND ${genhtml_bin} -o ${_outputname} ${_outputname}.info.cleaned
     COMMAND ${CMAKE_COMMAND} -E remove ${_outputname}.info ${_outputname}.info.cleaned
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
