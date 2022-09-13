@@ -7,22 +7,19 @@ simple hello world like example using cmake with C++ as programming language.
 * generating tests: -DBUILD_TESTING=On (default: On)
 
 ## build the project
-```
-#clone
-git clone https://github.com/alinelena/hello-cmake-cxx.git
-pushd hello-cmake-cxx
-mkdir -p build
-pushd build
-cmake ../ 
-make 
-make install # use -DCMAKE_INSTALL_PREFIX=/path  to control the installation path
-make docs
-make test
-make coverage
-make runcoverage
-make help # to see all of them
-popd 
-popd
+```bash
+
+   #clone
+   git clone https://github.com/alinelena/hello-cmake-cxx.git
+   cmake -S. -Bbuild -DBUILD_TESTING=On
+   cmake --build build
+   ctest --test-dir build
+
+   cmake --install  build# use -DCMAKE_INSTALL_PREFIX=/path  to control the installation path
+   cmake --build build -t docs
+   cmake --build build -t test
+   cmake --build -t coverage
+   cmake --build -t  runcoverage
 ```
 
 ## cross-compile for windows
