@@ -1,9 +1,9 @@
 CMAKE_POLICY(SET CMP0048 NEW)
 #to be abe to use version
-project(Hello 
+project(Hello
   LANGUAGES CXX
   VERSION 0.0.1.0)
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0)
 set(AUTHOR "Alin M Elena")
 set(AUTHOR_DETAILS "alin@elena.space")
 set(DESCRIPTION "Hello World project cmake with C++ example")
@@ -15,7 +15,7 @@ else()
   set(CMAKE_CXX_STANDARD 11)
 endif()
 message(STATUS "Building prepareation for ${PROJECT_NAME} version: ${Hello_VERSION_MAJOR}.${Hello_VERSION_MINOR}.${Hello_VERSION_PATCH}.${Hello_VERSION_TWEAK}")
-option (WITH_MYMATH "Build with my math implementation" ON) 
+option (WITH_MYMATH "Build with my math implementation" ON)
 if (WITH_MYMATH)
   add_definitions("-DWITH_MYMATH")
   message(STATUS "Build with my math implementation" )
@@ -30,14 +30,14 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 if (${DO_COVERAGE})
   include(CodeCoverage)
   set(BUILD_TESTING ON)
-endif() 
+endif()
 if (${BUILD_TESTING})
   include(CTest)
 endif()
 #advance but may be useful
 configure_file (
   "${PROJECT_SOURCE_DIR}/source/hello.h.in"
-  "${PROJECT_SOURCE_DIR}/source/hello.h"
+  "${PROJECT_BINARY_DIR}/source/hello.h"
   )
 
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})

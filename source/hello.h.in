@@ -1,4 +1,4 @@
-//    Copyright (c) 2015 Alin Marin Elena <alin@elena.space>
+//    Copyright (c) 2015-2022 Alin Marin Elena <alin@elena.space>
 //    The MIT License http://opensource.org/licenses/MIT
 #define Hello_VERSION_MAJOR @Hello_VERSION_MAJOR@
 #define Hello_VERSION_MINOR @Hello_VERSION_MINOR@
