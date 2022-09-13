@@ -1,0 +1,16 @@
+stages:
+  - build
+  - test
+
+build-code:
+  image: gcc:12.2.0
+  stage: build
+  script:
+    - cmake -S. -Bbuild
+    - cmake --build build
+
+test-code:
+  image: gcc:12.2.0
+  stage: build
+  script:
+    - ctest --test-dir build
