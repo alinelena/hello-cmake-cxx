@@ -21,4 +21,5 @@ cover-code:
   stage: coverage
   script:
     - cmake -S. -Bbuild_cov -DDO_COVERAGE=On
+    - cmake --build build_cov
     - cmake --build build_cov -t coverage
