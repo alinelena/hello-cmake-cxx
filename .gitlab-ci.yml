@@ -20,5 +20,5 @@ cover-code:
   image: eslib/debian-gcc:12.2.0
   stage: coverage
   script:
-    - cmake -S. -Bbuild_cov
+    - cmake -S. -Bbuild_cov -DDO_COVERAGE=On
     - cmake --build build_cov -t coverage
