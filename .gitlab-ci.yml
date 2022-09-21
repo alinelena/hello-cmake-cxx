@@ -16,7 +16,7 @@ test-code:
   script:
     - cmake -S. -Bbuild
     - cmake --build build
-    - ctest --test-dir build
+    - cmake --build build -t test
 
 cover-code:
   image: eslib/debian-gcc:12.2.0
